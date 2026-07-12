@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.OpenApi" />
+    <PackageReference Include="Scalar.AspNetCore" />
+    <PackageReference Include="Swashbuckle.AspNetCore" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design">
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NexusERP.Application\NexusERP.Application.csproj" />
+    <ProjectReference Include="..\NexusERP.Infrastructure\NexusERP.Infrastructure.csproj" />
+    <ProjectReference Include="..\NexusERP.Persistence\NexusERP.Persistence.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Configuration\" />
+    <Folder Include="Endpoints\" />
+    <Folder Include="Extensions\" />
+    <Folder Include="Filters\" />
+    <Folder Include="Middlewares\" />
+    <Folder Include="Options\" />
+  </ItemGroup>
+
+
+</Project>

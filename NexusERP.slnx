@@ -1,0 +1,20 @@
+<Solution>
+  <Folder Name="/database/" />
+  <Folder Name="/docker/" />
+  <Folder Name="/docs/" />
+  <Folder Name="/scripts/" />
+  <Folder Name="/Solution Items/">
+    <File Path="Directory.Build.props" />
+    <File Path="Directory.Packages.props" />
+    <File Path="global.json" />
+  </Folder>
+  <Folder Name="/src/">
+    <Project Path="src/NexusERP.API/NexusERP.API.csproj" Id="c332a857-6587-487f-ab5e-db348c6b5b00" />
+    <Project Path="src/NexusERP.Application/NexusERP.Application.csproj" Id="c0ae6691-8805-4fbc-a480-dda6730521f6" />
+    <Project Path="src/NexusERP.Domain/NexusERP.Domain.csproj" Id="564208e2-2661-494d-8257-41a294be8570" />
+    <Project Path="src/NexusERP.Infrastructure/NexusERP.Infrastructure.csproj" Id="3add0591-8512-442a-aba0-a0495e57c67b" />
+    <Project Path="src/NexusERP.Persistence/NexusERP.Persistence.csproj" Id="16cea067-0911-421b-a180-deba13e1c36d" />
+    <Project Path="src/NexusERP.SharedKernel/NexusERP.SharedKernel.csproj" Id="26f78370-1626-44ea-a0d4-1dec0a150bcc" />
+  </Folder>
+  <Folder Name="/tests/" />
+</Solution>

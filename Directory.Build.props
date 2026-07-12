@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project>
+
+  <PropertyGroup>
+
+    <Nullable>enable</Nullable>
+
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <LangVersion>preview</LangVersion>
+
+    <AnalysisLevel>latest</AnalysisLevel>
+
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <TreatWarningsAsErrors>false</TreatWarningsAsErrors>
+
+    <Deterministic>true</Deterministic>
+
+  </PropertyGroup>
+
+</Project>
