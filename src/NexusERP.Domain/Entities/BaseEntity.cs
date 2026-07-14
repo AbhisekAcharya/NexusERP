@@ -14,6 +14,10 @@ namespace NexusERP.Domain.Entities
         public void MarkAsDeleted()
         {
             IsDeleted = true;
+            Touch();
+        }
+        protected void Touch()
+        {
             ModifiedOnUtc = DateTime.UtcNow;
         }
     }

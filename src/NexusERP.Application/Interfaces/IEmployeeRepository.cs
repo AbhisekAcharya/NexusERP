@@ -14,6 +14,7 @@ namespace NexusERP.Application.Interfaces
         Task<List<Employee>> GetAllAsync(CancellationToken cancellationToken);
         Task UpdateAsync(Employee employee, CancellationToken cancellationToken);
         Task DeleteAsync(Employee employee, CancellationToken cancellationToken);
-        
+        Task<bool> ExistsByEmployeeCodeAsync(string employeeCode, Guid excludeEmployeeId, CancellationToken cancellationToken);
+        Task<bool> ExistsByEmailAsync(string email, Guid excludeEmployeeId, CancellationToken cancellationToken);
     }
 }

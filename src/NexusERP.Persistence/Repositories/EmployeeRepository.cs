@@ -46,5 +46,13 @@ namespace NexusERP.Persistence.Repositories
             _context.Employees.Remove(employee);
             await _context.SaveChangesAsync(cancellationToken);
         }
+        public async Task<bool> ExistsByEmployeeCodeAsync(string employeeCode, Guid excludeEmployeeId, CancellationToken cancellationToken)
+        {
+            return await _context.Employees.AnyAsync(x => x.EmployeeCode == employeeCode && x.Id != excludeEmployeeId, cancellationToken);
+        }
+        public async Task<bool> ExistsByEmailAsync(string email, Guid excludeEmployeeId, CancellationToken cancellationToken)
+        {
+            return await _context.Employees.AnyAsync(x => x.Email == email && x.Id != excludeEmployeeId, cancellationToken);
+        }
     }
 }

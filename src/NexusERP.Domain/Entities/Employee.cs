@@ -35,5 +35,14 @@ namespace NexusERP.Domain.Entities
             Status = status;
             ModifiedOnUtc = DateTime.UtcNow;
         }
+        public void Update(string employeeCode, string firstName, string lastName, string email, string department)
+        {
+            EmployeeCode = employeeCode;
+            FirstName = firstName;
+            LastName = lastName;
+            Email = email;
+            Department = department;
+            Touch();
+        }
     }
 }
