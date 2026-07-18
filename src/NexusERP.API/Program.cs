@@ -1,9 +1,13 @@
 using NexusERP.Application.DependencyInjection;
 using NexusERP.Persistence.DependencyInjection;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 // Services
-builder.Services.AddControllers();
+builder.Services.AddControllers().AddJsonOptions(options => 
+{ 
+    options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()); 
+});
 builder.Services.AddOpenApi();
 // Swagger
 builder.Services.AddEndpointsApiExplorer();

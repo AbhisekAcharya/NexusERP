@@ -22,7 +22,7 @@ namespace NexusERP.Persistence.Repositories
         }
         public async Task<Employee?> GetByIdAsync(Guid id, CancellationToken cancellationToken)
         {
-            return await _context.Employees.FirstOrDefaultAsync(x => x.Id == id, cancellationToken);
+            return await _context.Employees.FirstOrDefaultAsync(x => x.Id == id && !x.IsDeleted, cancellationToken);
         }
         public async Task<Employee?> GetByEmployeeCodeAsync(string employeeCode, CancellationToken cancellationToken)
         {
@@ -34,7 +34,7 @@ namespace NexusERP.Persistence.Repositories
         }
         public async Task<List<Employee>> GetAllAsync(CancellationToken cancellationToken)
         {
-            return await _context.Employees.AsNoTracking().ToListAsync(cancellationToken);
+            return await _context.Employees.Where(x => !x.IsDeleted).AsNoTracking().ToListAsync(cancellationToken);
         }
         public async Task UpdateAsync(Employee employee, CancellationToken cancellationToken)
         {
@@ -43,7 +43,8 @@ namespace NexusERP.Persistence.Repositories
         }
         public async Task DeleteAsync(Employee employee, CancellationToken cancellationToken)
         {
-            _context.Employees.Remove(employee);
+            employee.MarkAsDeleted();
+            _context.Employees.Update(employee);
             await _context.SaveChangesAsync(cancellationToken);
         }
         public async Task<bool> ExistsByEmployeeCodeAsync(string employeeCode, Guid excludeEmployeeId, CancellationToken cancellationToken)

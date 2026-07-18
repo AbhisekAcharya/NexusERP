@@ -44,5 +44,10 @@ namespace NexusERP.Domain.Entities
             Department = department;
             Touch();
         }
+        public void MarkAsDeleted()
+        {
+            IsDeleted = true;
+            Touch();
+        }
     }
 }
