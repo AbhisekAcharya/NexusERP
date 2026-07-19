@@ -22,14 +22,14 @@ namespace NexusERP.SharedKernel.Responses
                 Timestamp = DateTime.UtcNow
             };
         }
-        public static ApiResponse<T> Failure(string message, int statusCode)
+        public static ApiResponse<T> Failure(string message, int statusCode, T? data = default)
         {
             return new ApiResponse<T>
             {
                 Status = ResponseStatus.Failure,
                 StatusCode = statusCode,
                 Message = message,
-                Data = default,
+                Data = data,
                 Timestamp = DateTime.UtcNow
             };
         }

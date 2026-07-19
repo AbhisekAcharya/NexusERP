@@ -15,5 +15,6 @@ namespace NexusERP.SharedKernel.Responses
         public const string NotFound = "Record not found.";
         public const string Conflict = "Record already exists.";
         public const string BadRequest = "Bad request.";
+        public const string InternalServerError = "An unexpected error occurred.";
     }
 }

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using NexusERP.Application.Commands.Employees.CreateEmployee;
 using NexusERP.Application.Commands.Employees.DeleteEmployee;
@@ -10,6 +11,7 @@ using NexusERP.SharedKernel.Responses;
 
 namespace NexusERP.API.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/[controller]")]
     public sealed class EmployeesController : BaseController

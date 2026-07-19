@@ -9,6 +9,7 @@
     <PackageVersion Include="FluentValidation" Version="12.1.1" />
     <PackageVersion Include="FluentValidation.DependencyInjectionExtensions" Version="12.1.1" />
     <!-- EF Core -->
+    <PackageVersion Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="10.0.10" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore" Version="10.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.9" />
     <PackageVersion Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.9" />
@@ -16,10 +17,11 @@
     <!-- Dependency Injection -->
     <PackageVersion Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
     <!-- OpenAPI -->
-    <PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />
-    <PackageVersion Include="Microsoft.OpenApi" Version="3.8.0" />
-    <PackageVersion Include="Swashbuckle.AspNetCore" Version="10.0.0" />
+    <!--<PackageVersion Include="Microsoft.AspNetCore.OpenApi" Version="10.0.9" />-->
+    <!--<PackageVersion Include="Microsoft.OpenApi" Version="3.8.0" />-->
+    <!--<PackageVersion Include="Swashbuckle.AspNetCore" Version="10.0.0" />-->
+    <PackageVersion Include="Swashbuckle.AspNetCore" Version="6.6.2" />
     <!-- Scalar -->
-    <PackageVersion Include="Scalar.AspNetCore" Version="2.8.0" />
+    <!--<PackageVersion Include="Scalar.AspNetCore" Version="2.8.0" />-->
   </ItemGroup>
 </Project>
