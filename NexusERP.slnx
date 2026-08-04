@@ -2,6 +2,7 @@
   <Folder Name="/database/" />
   <Folder Name="/docker/" />
   <Folder Name="/docs/" />
+  <Folder Name="/frontend/" />
   <Folder Name="/scripts/" />
   <Folder Name="/Solution Items/">
     <File Path="Directory.Build.props" />
