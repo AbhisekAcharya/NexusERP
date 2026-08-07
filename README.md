@@ -1,22 +1,22 @@
 # NexusERP
 
-> A Production-Grade Multi-Tenant ERP System built using ASP.NET Core, .NET 10, Clean Architecture, CQRS, MediatR, Entity Framework Core, and SQL Server.
+> A Production-Grade Multi-Tenant ERP System built using **ASP.NET Core (.NET 10)**, **Angular 20**, **Clean Architecture**, **CQRS**, **MediatR**, **Entity Framework Core**, and **SQL Server**.
 
 ---
 
-## Overview
+# Overview
 
-NexusERP is a modern Enterprise Resource Planning (ERP) system designed to demonstrate enterprise-level software architecture and development practices.
+NexusERP is a modern Enterprise Resource Planning (ERP) system designed to demonstrate enterprise-level software architecture, scalable software development practices, and modern UI/UX principles.
 
-The goal of this project is not only to build an ERP application but also to showcase scalable, maintainable, and production-ready backend architecture following modern .NET development standards.
+The project is being developed module-by-module following **Clean Architecture**, **Domain-Driven Design (DDD)**, **CQRS**, **SOLID Principles**, and modern enterprise frontend architecture using Angular.
 
-This project is being developed module-by-module while following Domain-Driven Design principles, Clean Architecture, CQRS, and SOLID principles.
+The objective is to build a complete production-grade ERP platform while showcasing enterprise software engineering best practices.
 
 ---
 
-## Technology Stack
+# Technology Stack
 
-### Backend
+## Backend
 
 - ASP.NET Core (.NET 10)
 - C#
@@ -26,70 +26,141 @@ This project is being developed module-by-module while following Domain-Driven D
 - FluentValidation
 - Swagger / OpenAPI
 
-### Architecture
+## Frontend
 
-- Clean Architecture
-- CQRS (Command Query Responsibility Segregation)
-- Repository Pattern
-- Dependency Injection
-- Result Pattern
-- Domain Driven Design (DDD)
-- Vertical Slice Feature Organization
-
----
-
-## Solution Structure
-
-```
-src
-│
-├── NexusERP.API
-│
-├── NexusERP.Application
-│
-├── NexusERP.Domain
-│
-├── NexusERP.Persistence
-│
-├── NexusERP.Infrastructure
-│
-└── NexusERP.SharedKernel
-```
-
-### Project Responsibilities
-
-| Project | Responsibility |
-|----------|----------------|
-| NexusERP.API | REST API Endpoints |
-| NexusERP.Application | CQRS Commands, Queries, Validation, Business Logic |
-| NexusERP.Domain | Entities, Enums, Domain Logic |
-| NexusERP.Persistence | EF Core, DbContext, Repository Implementation |
-| NexusERP.Infrastructure | External Integrations (Future) |
-| NexusERP.SharedKernel | Shared Result Pattern, Errors, Common Classes |
+- Angular 20
+- TypeScript
+- HTML5
+- CSS3
+- Angular Router
+- Angular Standalone Components
+- Reactive Forms
+- RxJS
+- Angular HTTP Client
 
 ---
 
 # Architecture
 
-The project follows **Clean Architecture**.
+## Backend Architecture
+
+- Clean Architecture
+- Domain Driven Design (DDD)
+- CQRS (Command Query Responsibility Segregation)
+- Repository Pattern
+- Dependency Injection
+- Result Pattern
+- Vertical Slice Architecture
+- SOLID Principles
+
+## Frontend Architecture
+
+- Feature-Based Folder Structure
+- Standalone Components
+- Shared Components
+- Core Module
+- Lazy Loading Ready
+- Reusable UI Components
+- Responsive Design
+
+---
+
+# Solution Structure
 
 ```
-Presentation (API)
-        │
-        ▼
-Application
-        │
-        ▼
-Domain
-        ▲
-        │
-Persistence
+NexusERP
+
+backend/
+│
+├── NexusERP.API
+├── NexusERP.Application
+├── NexusERP.Domain
+├── NexusERP.Persistence
+├── NexusERP.Infrastructure
+└── NexusERP.SharedKernel
+
+frontend/
+│
+├── src
+│
+├── app
+│   ├── core
+│   ├── shared
+│   ├── layouts
+│   ├── features
+│   │     ├── auth
+│   │     ├── dashboard
+│   │     ├── employee
+│   │     ├── department
+│   │     └── ...
+│   │
+│   ├── services
+│   ├── models
+│   ├── guards
+│   └── interceptors
+│
+├── assets
+└── environments
 ```
 
-### Request Flow
+---
+
+# Project Responsibilities
+
+| Project | Responsibility |
+|----------|---------------|
+| NexusERP.API | REST API Endpoints |
+| NexusERP.Application | CQRS Commands, Queries, Validation, Business Logic |
+| NexusERP.Domain | Domain Entities & Business Rules |
+| NexusERP.Persistence | Entity Framework Core, Repository Layer |
+| NexusERP.Infrastructure | External Services & Integrations |
+| NexusERP.SharedKernel | Result Pattern, Common Utilities |
+| Angular Frontend | Enterprise User Interface |
+
+---
+
+# System Architecture
+
+```
+Angular Frontend
+        │
+        ▼
+REST API
+        │
+        ▼
+ASP.NET Core
+        │
+        ▼
+MediatR
+        │
+        ▼
+Validation Pipeline
+        │
+        ▼
+Command / Query Handler
+        │
+        ▼
+Repository
+        │
+        ▼
+Entity Framework Core
+        │
+        ▼
+SQL Server
+```
+
+---
+
+# Request Flow
 
 ```
 HTTP Request
+      │
+      ▼
+Angular UI
+      │
+      ▼
+ASP.NET Core API
       │
       ▼
 Controller
@@ -107,9 +178,6 @@ Command / Query Handler
 Repository
       │
       ▼
-Entity Framework Core
-      │
-      ▼
 SQL Server
 ```
 
@@ -119,159 +187,298 @@ SQL Server
 
 Commands are responsible for modifying data.
 
-Examples:
+Examples
 
 - CreateEmployeeCommand
 - UpdateEmployeeCommand
 
-Queries are responsible for reading data.
+Queries are responsible for retrieving data.
 
-Examples:
+Examples
 
 - GetEmployeeQuery
 - GetAllEmployeesQuery
 
-This separation keeps the codebase scalable and easy to maintain.
+This separation provides a scalable, maintainable, and testable architecture.
 
 ---
 
-# Completed Features
+# Completed Backend Features
 
 ## Employee Module
 
 ### Create Employee
 
 - Create Employee API
-- Fluent Validation
+- FluentValidation
 - Duplicate Employee Code Validation
 - Duplicate Email Validation
-- Result Pattern
 - CQRS Command
 - MediatR Handler
+- Result Pattern
 
 ---
 
 ### Get Employee
 
-- Get Employee By Id API
-- CQRS Query
-- Employee DTO
+- Get Employee By Id
 - Repository Pattern
+- DTO Mapping
+- CQRS Query
 
 ---
 
 ### Get All Employees
 
-- Retrieve all employees
-- CQRS Query
+- Retrieve All Employees
+- AsNoTracking()
 - DTO Mapping
-- Read-only queries using AsNoTracking()
+- CQRS Query
 
 ---
 
 ### Update Employee
 
 - Update Employee API
-- Duplicate Employee Code Validation
-- Duplicate Email Validation
 - Domain Update Method
-- Automatic ModifiedOnUtc update
+- Duplicate Validation
+- Automatic ModifiedOnUtc Update
 
 ---
 
-## Database
+# Database
 
 Implemented
 
 - SQL Server
 - Entity Framework Core
-- Code First
+- Code First Approach
 - EF Core Migrations
-- Unique Index on EmployeeCode
-- Unique Index on Email
+- Unique EmployeeCode
+- Unique Email
+- Automatic Timestamps
 
 ---
 
-## Validation
+# Validation
 
 Implemented using FluentValidation.
 
-Current validations include:
+Current validations
 
-- Required fields
-- Email format validation
-- Maximum length validation
-- Duplicate Employee Code validation
-- Duplicate Email validation
+- Required Fields
+- Email Format
+- Maximum Length
+- Duplicate Employee Code
+- Duplicate Email
 
 ---
 
-## Shared Components
+# Shared Components
 
 - Result Pattern
-- Generic Result<T>
+- Generic Result
 - Error Model
 - Dependency Injection
-- Validation Pipeline Behavior
+- Validation Pipeline
+- Repository Pattern
+
+---
+
+# Completed Frontend Features
+
+## Authentication Module
+
+Completed
+
+- Modern Enterprise Login Screen
+- Responsive Login Layout
+- Enterprise Branding Panel
+- Gradient Typography
+- Animated Wave Footer
+- Language Selector
+- Login Card
+- Email Input
+- Password Input
+- Password Visibility Icon
+- Remember Me Checkbox
+- Forgot Password Link
+- Gradient Sign In Button
+- Google Login Button
+- Microsoft Login Button
+- Contact Administrator Section
+- Enterprise Footer
+
+---
+
+## UI Features
+
+Completed
+
+- Responsive Design
+- Modern Enterprise UI
+- Glassmorphism Inspired Login Card
+- Reusable Form Controls
+- Gradient Buttons
+- Custom SVG Icons
+- Enterprise Branding
+- Modern Typography
+- Professional Color Palette
 
 ---
 
 # Current APIs
 
 | Method | Endpoint | Status |
-|----------|-------------------------|--------|
-| POST | /api/employees | Completed |
-| GET | /api/employees | Completed |
-| GET | /api/employees/{id} | Completed |
-| PUT | /api/employees/{id} | Completed |
+|---------|----------|--------|
+| POST | /api/employees | ✅ Completed |
+| GET | /api/employees | ✅ Completed |
+| GET | /api/employees/{id} | ✅ Completed |
+| PUT | /api/employees/{id} | ✅ Completed |
+
+---
+
+# Development Status
+
+## Backend
+
+```
+✔ Clean Architecture
+
+✔ CQRS
+
+✔ MediatR
+
+✔ Repository Pattern
+
+✔ Fluent Validation
+
+✔ Result Pattern
+
+✔ Employee Module
+
+✔ SQL Server
+
+✔ Entity Framework Core
+```
+
+---
+
+## Frontend
+
+```
+✔ Angular Project Setup
+
+✔ Enterprise Login Screen
+
+✔ Responsive Layout
+
+✔ Authentication UI
+
+✔ Gradient Branding
+
+✔ Wave Background
+
+✔ Language Selector
+
+✔ Google Login Button
+
+✔ Microsoft Login Button
+
+✔ Contact Administrator
+
+✔ Enterprise Footer
+```
 
 ---
 
 # Upcoming Features
 
-Employee Module
+## Authentication
 
-- Soft Delete
-- Restore Employee
+- JWT Authentication
+- Refresh Tokens
+- ASP.NET Core Identity
+- Role Based Authorization
+- Permission Based Authorization
+- Secure Login
+- Remember Me Functionality
+
+---
+
+## Dashboard
+
+- Dashboard Layout
+- Sidebar Navigation
+- Top Navigation
+- Dashboard Widgets
+- Charts
+- Analytics
+- Notifications
+
+---
+
+## Employee Module
+
+- Employee Management UI
+- Create Employee Screen
+- Edit Employee
+- Delete Employee
+- Search
 - Pagination
-- Searching
 - Sorting
 - Filtering
+- Export to Excel
+- Export to PDF
 
-Master Modules
+---
+
+## Master Modules
 
 - Department Management
 - Designation Management
 - Company Management
 - Branch Management
 - Role Management
+- User Management
 
-Authentication
+---
 
-- JWT Authentication
-- Refresh Tokens
-- Role Based Authorization
-- Permission Based Authorization
+## Advanced Backend Features
 
-Advanced Features
-
-- Dapper for Read Queries
-- Redis Caching
-- Serilog Logging
 - Global Exception Middleware
-- API Versioning
+- Serilog Logging
+- Redis Caching
+- Dapper Read Models
 - Background Jobs (Hangfire)
 - Audit Logging
-- File Uploads
+- File Upload
 - Email Service
 - Unit Testing
 - Integration Testing
+- API Versioning
+
+---
+
+## Advanced Frontend Features
+
+- Dashboard Charts
+- Dynamic Sidebar
+- Breadcrumb Navigation
+- Theme Support (Light/Dark)
+- Localization (i18n)
+- Reusable Component Library
+- Skeleton Loaders
+- Toast Notifications
+- Data Tables
+- Form Validation
+- Route Guards
 
 ---
 
 # Future Vision
 
-The long-term goal of NexusERP is to evolve into a complete production-grade ERP platform supporting:
+The long-term goal is to evolve NexusERP into a complete enterprise platform supporting
 
 - Multi-Tenant Architecture
 - Human Resource Management (HRMS)
@@ -279,47 +486,66 @@ The long-term goal of NexusERP is to evolve into a complete production-grade ERP
 - Inventory Management
 - Sales & Purchase
 - Finance
-- Customer Relationship Management (CRM)
-- Reporting & Dashboards
+- CRM
+- Reporting
+- Business Intelligence
 - Mobile Applications (.NET MAUI)
-- Cloud Deployment (Azure)
+- Azure Cloud Deployment
 
 ---
 
-# Development Status
+# UI Preview
 
-Current Progress
+Current Screens Completed
+
+- Enterprise Login Screen
+- Authentication UI
+
+Upcoming
+
+- Dashboard
+- Employee Management
+- Master Modules
+- Reports
+- Settings
+
+---
+
+# Coding Standards
+
+- SOLID Principles
+- Clean Architecture
+- Domain Driven Design
+- CQRS
+- Repository Pattern
+- Dependency Injection
+- Fluent Validation
+- MediatR
+- Async/Await
+- Nullable Reference Types
+- REST API Best Practices
+
+---
+
+# Development Progress
 
 ```
-Employee Module
+Backend Progress
+████████████████████░░░░ 80%
 
-✔ Create Employee
+Frontend Progress
+██████████░░░░░░░░░░░░░░ 40%
 
-✔ Get Employee
-
-✔ Get All Employees
-
-✔ Update Employee
-
-⬜ Soft Delete
-
-⬜ Pagination
-
-⬜ Search
-
-⬜ Sorting
-
-⬜ Filtering
+Overall ERP Progress
+███████████░░░░░░░░░░░░░ 50%
 ```
 
 ---
 
 # Author
 
-**Abhisek Acharya**
+## Abhisek Acharya
 
-Senior Software Developer
+**Senior Software Developer**
 
-Building a production-grade ERP system using modern .NET technologies and enterprise architecture principles.
-
----
+Building a production-grade ERP platform using modern .NET technologies, Angular, Clean Architecture, CQRS, and enterprise software engineering practices.
