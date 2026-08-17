@@ -14,6 +14,197 @@ The objective is to build a complete production-grade ERP platform while showcas
 
 ---
 
+
+---
+
+# Current Implementation
+
+NexusERP currently contains a working backend foundation and an Angular authentication frontend.
+
+## Backend
+
+- Employee CRUD APIs are implemented.
+- Employee validation and duplicate checks are implemented.
+- User authentication foundation is implemented.
+- Username/password login is implemented.
+- Password hashing and verification are implemented.
+- JWT token generation is implemented.
+- Authentication responses use the shared API response pattern.
+- Swagger/OpenAPI can be used to test the login endpoint.
+
+## Frontend
+
+- Angular 20 application structure is implemented.
+- Enterprise login UI is implemented.
+- Username and password fields use Reactive Forms.
+- Client-side validation is implemented.
+- Password visibility toggle is implemented.
+- Login API is integrated.
+- Loading state is displayed while authentication is in progress.
+- Successful and failed login responses are handled.
+- Forgot Password UI exists, but its backend workflow is pending.
+
+---
+
+# Authentication Backend
+
+## Login API
+
+The backend authentication endpoint is:
+
+```http
+POST /api/auth/login
+```
+
+The current API contract uses **username** and **password**.
+
+Example request:
+
+```json
+{
+  "username": "Admin",
+  "password": "admin@123"
+}
+```
+
+The frontend also uses **Username** so that it matches the current backend contract.
+
+## Login Architecture
+
+```text
+Angular Login Screen
+        │
+        ▼
+AuthService
+        │
+        ▼
+POST /api/auth/login
+        │
+        ▼
+AuthController
+        │
+        ▼
+LoginCommand
+        │
+        ▼
+LoginHandler
+        │
+        ├── IUserRepository
+        ├── IPasswordHasher
+        └── IJwtTokenProvider
+        │
+        ▼
+JWT Token
+        │
+        ▼
+LoginResponse
+```
+
+## Authentication Behaviour
+
+The login handler:
+
+1. Retrieves the user by username.
+2. Returns HTTP 401 when the user does not exist.
+3. Verifies the supplied password against the stored password hash.
+4. Returns HTTP 401 when the password is incorrect.
+5. Generates a JWT after successful authentication.
+6. Returns User ID, Employee ID, Username and Role.
+
+Invalid credentials return:
+
+```text
+Invalid username or password.
+```
+
+## JWT Response
+
+Successful authentication returns a response containing:
+
+- Token
+- User ID
+- Employee ID
+- Username
+- Role
+
+Example:
+
+```json
+{
+  "status": "Success",
+  "statusCode": 200,
+  "message": "Login successful.",
+  "data": {
+    "token": "<JWT_TOKEN>",
+    "userId": "<USER_ID>",
+    "employeeId": "<EMPLOYEE_ID>",
+    "username": "Admin",
+    "role": "Admin"
+  }
+}
+```
+
+## Angular Login Integration
+
+```text
+User enters username
+        │
+        ▼
+User enters password
+        │
+        ▼
+Reactive Form validation
+        │
+        ├── Invalid → Display validation errors
+        │
+        └── Valid
+              │
+              ▼
+          AuthService
+              │
+              ▼
+       POST /api/auth/login
+              │
+       ┌──────┴──────┐
+       │             │
+     200 OK         401
+       │             │
+       ▼             ▼
+ Login success    Login error
+```
+
+The Sign In button displays a loading state while the API request is running.
+
+## Forgot Password
+
+The Forgot Password link is currently part of the login UI.
+
+The actual Forgot Password and Reset Password workflow is **not implemented yet**, because the corresponding backend APIs and email workflow still need to be created.
+
+Planned flow:
+
+```text
+Forgot Password
+      │
+      ▼
+Enter Username / Email
+      │
+      ▼
+Forgot Password API
+      │
+      ▼
+Generate Reset Token
+      │
+      ▼
+Send Reset Email
+      │
+      ▼
+Reset Password Screen
+      │
+      ▼
+Reset Password API
+```
+
 # Technology Stack
 
 ## Backend
@@ -298,7 +489,7 @@ Completed
 - Animated Wave Footer
 - Language Selector
 - Login Card
-- Email Input
+- Username Input
 - Password Input
 - Password Visibility Icon
 - Remember Me Checkbox
@@ -308,6 +499,15 @@ Completed
 - Microsoft Login Button
 - Contact Administrator Section
 - Enterprise Footer
+- Angular Reactive Form
+- Username Required Validation
+- Password Required Validation
+- Login Form Submission Handling
+- Login API Integration
+- Authentication Loading State
+- Login Success Feedback
+- Login Failure Handling
+- HTTP 401 Authentication Error Handling
 
 ---
 
@@ -330,6 +530,7 @@ Completed
 # Current APIs
 
 | Method | Endpoint | Status |
+| POST | /api/auth/login | ✅ Completed |
 |---------|----------|--------|
 | POST | /api/employees | ✅ Completed |
 | GET | /api/employees | ✅ Completed |
@@ -360,6 +561,14 @@ Completed
 ✔ SQL Server
 
 ✔ Entity Framework Core
+
+✔ User / Authentication Foundation
+
+✔ Login API
+
+✔ Password Hashing / Verification
+
+✔ JWT Token Generation
 ```
 
 ---
@@ -388,6 +597,20 @@ Completed
 ✔ Contact Administrator
 
 ✔ Enterprise Footer
+
+✔ Reactive Login Form
+
+✔ Username Validation
+
+✔ Password Validation
+
+✔ Password Visibility Toggle
+
+✔ Login API Integration
+
+✔ Login Success / Failure Handling
+
+✔ Login Loading State
 ```
 
 ---
@@ -396,13 +619,28 @@ Completed
 
 ## Authentication
 
-- JWT Authentication
-- Refresh Tokens
-- ASP.NET Core Identity
-- Role Based Authorization
-- Permission Based Authorization
-- Secure Login
-- Remember Me Functionality
+- [x] Username / Password Login API
+- [x] Password Hashing
+- [x] Password Verification
+- [x] JWT Token Generation
+- [x] Angular Login API Integration
+- [x] Login Form Validation
+- [x] Login Success / Failure Handling
+- [ ] JWT Authentication Middleware / Protected APIs
+- [ ] Refresh Tokens
+- [ ] ASP.NET Core Identity
+- [ ] Role Based Authorization
+- [ ] Permission Based Authorization
+- [ ] Secure Token Storage
+- [ ] Remember Me Persistence
+- [ ] Logout
+- [ ] Authentication Route Guards
+- [ ] HTTP Authentication Interceptor
+- [ ] Forgot Password API
+- [ ] Reset Password API
+- [ ] Email Service
+- [ ] Google Authentication
+- [ ] Microsoft Authentication
 
 ---
 
@@ -500,6 +738,12 @@ Current Screens Completed
 
 - Enterprise Login Screen
 - Authentication UI
+- Username / Password Login Form
+- Login Validation States
+- Login Loading State
+- Login Success Feedback
+- Login Failure Feedback
+- Forgot Password UI
 
 Upcoming
 
