@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "C:\\Development\\NexusERP\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{C0AE6691-8805-4FBC-A480-DDA6730521F6}|src\\NexusERP.Application\\NexusERP.Application.csproj|c:\\development\\nexuserp\\src\\nexuserp.application\\features\\authentication\\commands\\login\\loginhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0AE6691-8805-4FBC-A480-DDA6730521F6}|src\\NexusERP.Application\\NexusERP.Application.csproj|solutionrelative:src\\nexuserp.application\\features\\authentication\\commands\\login\\loginhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C0AE6691-8805-4FBC-A480-DDA6730521F6}|src\\NexusERP.Application\\NexusERP.Application.csproj|c:\\development\\nexuserp\\src\\nexuserp.application\\features\\authentication\\commands\\login\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C0AE6691-8805-4FBC-A480-DDA6730521F6}|src\\NexusERP.Application\\NexusERP.Application.csproj|solutionrelative:src\\nexuserp.application\\features\\authentication\\commands\\login\\logincommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C332A857-6587-487F-AB5E-DB348C6B5B00}|src\\NexusERP.API\\NexusERP.API.csproj|c:\\development\\nexuserp\\src\\nexuserp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C332A857-6587-487F-AB5E-DB348C6B5B00}|src\\NexusERP.API\\NexusERP.API.csproj|solutionrelative:src\\nexuserp.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C332A857-6587-487F-AB5E-DB348C6B5B00}|src\\NexusERP.API\\NexusERP.API.csproj|c:\\development\\nexuserp\\src\\nexuserp.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C332A857-6587-487F-AB5E-DB348C6B5B00}|src\\NexusERP.API\\NexusERP.API.csproj|solutionrelative:src\\nexuserp.api\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C332A857-6587-487F-AB5E-DB348C6B5B00}|src\\NexusERP.API\\NexusERP.API.csproj|c:\\development\\nexuserp\\src\\nexuserp.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{C332A857-6587-487F-AB5E-DB348C6B5B00}|src\\NexusERP.API\\NexusERP.API.csproj|solutionrelative:src\\nexuserp.api\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "C:\\Development\\NexusERP\\src\\NexusERP.API\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "src\\NexusERP.API\\Properties\\launchSettings.json",
+              "ToolTip": "C:\\Development\\NexusERP\\src\\NexusERP.API\\Properties\\launchSettings.json",
+              "RelativeToolTip": "src\\NexusERP.API\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-08-17T06:43:15.224Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Development\\NexusERP\\src\\NexusERP.API\\Program.cs",
+              "RelativeDocumentMoniker": "src\\NexusERP.API\\Program.cs",
+              "ToolTip": "C:\\Development\\NexusERP\\src\\NexusERP.API\\Program.cs",
+              "RelativeToolTip": "src\\NexusERP.API\\Program.cs",
+              "ViewState": "AgIAACUAAAAAAAAAAAAkwEEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-17T05:27:40.067Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "LoginHandler.cs",
+              "DocumentMoniker": "C:\\Development\\NexusERP\\src\\NexusERP.Application\\Features\\Authentication\\Commands\\Login\\LoginHandler.cs",
+              "RelativeDocumentMoniker": "src\\NexusERP.Application\\Features\\Authentication\\Commands\\Login\\LoginHandler.cs",
+              "ToolTip": "C:\\Development\\NexusERP\\src\\NexusERP.Application\\Features\\Authentication\\Commands\\Login\\LoginHandler.cs",
+              "RelativeToolTip": "src\\NexusERP.Application\\Features\\Authentication\\Commands\\Login\\LoginHandler.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAAAYwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-17T04:33:00.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "LoginCommand.cs",
+              "DocumentMoniker": "C:\\Development\\NexusERP\\src\\NexusERP.Application\\Features\\Authentication\\Commands\\Login\\LoginCommand.cs",
+              "RelativeDocumentMoniker": "src\\NexusERP.Application\\Features\\Authentication\\Commands\\Login\\LoginCommand.cs",
+              "ToolTip": "C:\\Development\\NexusERP\\src\\NexusERP.Application\\Features\\Authentication\\Commands\\Login\\LoginCommand.cs",
+              "RelativeToolTip": "src\\NexusERP.Application\\Features\\Authentication\\Commands\\Login\\LoginCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-17T04:32:32.52Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Development\\NexusERP\\src\\NexusERP.API\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "src\\NexusERP.API\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Development\\NexusERP\\src\\NexusERP.API\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "src\\NexusERP.API\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAmwBoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-08-11T07:59:43.728Z",
+              "EditorCaption": ""
             }
           ]
         }

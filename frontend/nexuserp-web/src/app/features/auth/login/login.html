@@ -1,12 +1,16 @@
 <div class="login-container">
+
     <div class="login-wrapper">
+        <!-- LEFT PANEL -->
         <div class="left-panel">
             <div class="logo-container">
-                <img class="logo" src="nexuslogo.png" alt="NexusERP Logo" >
+                <img class="logo" src="nexuslogo.png" alt="NexusERP Logo">
             </div>            
             <h1>
                 One Platform.<br>
-                <span class="gradient-text">Infinite&nbsp;Possibilities.</span>
+                <span class="gradient-text">
+                    Infinite Possibilities.
+                </span>
             </h1>
             <p class="description">
                 NexusERP empowers your business with integrated
@@ -14,109 +18,223 @@
                 productivity and drive growth.
             </p>
             <div class="feature-list">
+
+                <!-- FEATURE 1 -->
                 <div class="feature">
                     <div class="feature-icon">
-                        <img src="realtimeinsights.png" alt="Real-time Insights Logo" >
+                        <img src="realtimeinsights.png" alt="Real-time Insights Logo">
                     </div>
                     <div>
-                        <h3>Real-time Insights</h3>
-                        <p>Make smarter decisions with </p>
-                        <p>powerful dashboards.</p>
+                        <h3> Real-time Insights </h3>
+                        <p> Make smarter decisions with </p>
+                        <p> powerful dashboards. </p>
                     </div>
                 </div>
+
+                <!-- FEATURE 2 -->
                 <div class="feature">
                     <div class="feature-icon">
-                        <img src="secureandreliable.png" alt="Secure & Reliable Logo" >
+                        <img src="secureandreliable.png" alt="Secure & Reliable Logo">
                     </div>
                     <div>
-                        <h3>Secure & Reliable</h3>
-                        <p>Enterprise-grade security to</p>
-                        <p>protect your data.</p>
+                        <h3> Secure & Reliable </h3>
+                        <p> Enterprise-grade security to </p>
+                        <p> protect your data. </p>
                     </div>
                 </div>
+
+                <!-- FEATURE 3 -->
                 <div class="feature">
                     <div class="feature-icon">
-                        <img src="seamlessintegration.png" alt="Seamless Integration Logo" >
+                        <img src="seamlessintegration.png" alt="Seamless Integration Logo">
                     </div>
                     <div>
-                        <h3>Seamless Integration</h3>
-                        <p>All your business processes, </p>
-                        <p>unified in one platform.</p>
+                        <h3> Seamless Integration </h3>
+                        <p> All your business processes, </p>
+                        <p> unified in one platform. </p>
                     </div>
                 </div>
             </div>
+
+            <!-- WAVE -->
             <div class="wave-placeholder">
-                <img src="wave.png" alt="Wave Placeholder Logo" >
+                <img src="wave.png" alt="Wave">
             </div>
         </div>
+
+        <!-- RIGHT PANEL -->
         <div class="right-panel">
+            <!-- TOP BAR -->
             <div class="top-bar">
-                <button class="language-btn">
+                <button type="button" class="language-btn">
                     🌐 English
                 </button>
-            </div>  
+            </div>
+
+            <!-- LOGIN CONTENT -->
             <div class="login-content">
                 <div class="login-card">
+
+                    <!-- LOCK ICON -->
                     <div class="lock-circle">
-                        <img src="lockicon.png" alt="Lock Logo" >
+                        <img src="lockicon.png" alt="Lock">
                     </div>
-                    <h2>Welcome Back</h2>
+
+                    <!-- TITLE -->
+                    <h2> Welcome Back </h2>
                     <p>
                         Sign in to continue to
-                        <span class="brand-text">NexusERP</span>
+                        <span class="brand-text">
+                            NexusERP
+                        </span>
                     </p>
-                    <div class="login-form">    
-                        <div class="form-group">
-                            <label>Email Address</label>
-                            <div class="input-box">
-                                <img src="emailicon.png" class="input-icon">
-                                <input type="email" placeholder="Enter your email" />
-                            </div>   
-                        </div>
-                        <div class="form-group">
-                            <div class="label-row">
-                                <label>Password</label>
-                                <a href="#">Forgot Password?</a>
+
+                    <!-- LOGIN FORM -->
+                    <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
+                        <div class="login-form">
+
+                            <!-- EMAIL -->
+                            <div class="form-group">
+                                <label for="username">Username</label>
+                                <div class="input-box" [class.input-error]="usernameInvalid">
+                                    <img src="emailicon.png" class="input-icon" alt="Username">
+                                    <input id="username" type="text" formControlName="username" placeholder="Enter your username" autocomplete="username">
+                                </div>
+                                <!-- USERNAME VALIDATION -->
+                                <div class="validation-message" *ngIf="submitted && username?.hasError('required')">
+                                    Username is required.
+                                </div>
+                                <div class="validation-message" *ngIf="submitted && username?.hasError('minlength')">
+                                    Username must be at least 3 characters.
+                                </div>
                             </div>
-                            <div class="input-box">
-                                <img src="passwordicon.png" class="input-icon">
-                                <input type="password" placeholder="Enter your password">
-                                <img src="eyeicon.png" class="eye-icon">
+
+                            <!-- PASSWORD -->
+                            <div class="form-group">
+                                <div class="label-row">
+                                    <label for="password"> Password </label>
+                                    <a href="javascript:void(0)" (click)="openForgotPassword()">
+                                        Forgot Password?
+                                    </a>
+                                </div>
+
+                                <div class="input-box" [class.input-error]="password?.invalid && (password?.touched || submitted)">
+                                    <img src="passwordicon.png" class="input-icon" alt="Password">
+                                    <input id="password" [type]="showPassword ? 'text' : 'password'" formControlName="password" placeholder="Enter your password" autocomplete="current-password">
+                                    <img src="eyeicon.png" class="eye-icon" alt="Show Password" (click)="togglePassword()">
+                                </div>
+
+                                <!-- PASSWORD VALIDATION -->
+                                <div class="validation-message" *ngIf="password?.invalid && (password?.touched || submitted)">
+                                    <span *ngIf="password?.errors?.['required']"> Password is required. </span>
+                                    <span *ngIf="password?.errors?.['minlength']"> Password must be at least 8 characters. </span>
+                                </div>
                             </div>
+
                         </div>
-                    </div>
-                    <div class="remember-row">
-                        <label class="remember-me">
-                            <input type="checkbox">
-                            <span>Remember me</span>
-                        </label>
-                    </div>
-                    <button class="signin-btn">
-                        <span>Sign In</span>
-                        <img src="arrow-right.png" alt="">
-                    </button>
+
+                        <!-- REMEMBER ME -->
+                        <div class="remember-row">
+                            <label class="remember-me">
+                                <input type="checkbox" formControlName="rememberMe">
+                                <span> Remember me </span>
+                            </label>
+                        </div>
+
+                        <div class="login-error" *ngIf="loginError">
+                            {{ loginError }}
+                        </div>
+
+                        <!-- SIGN IN -->
+                        <button type="submit" class="signin-btn" [disabled]="isLoading">
+                            <span>
+                                {{ isLoading ? 'Signing In...' : 'Sign In' }}
+                            </span>
+                            <img *ngIf="!isLoading" src="arrow-right.png" alt="">
+                        </button>
+                    </form>
+
+
+                    <!-- SOCIAL LOGIN -->
                     <div class="divider">
-                        <span>or continue with</span>
-                    </div>
+                        <span> or continue with </span>
+                    </div>                    
                     <div class="social-login">
-                        <button class="social-btn">
+                        <button type="button" class="social-btn">
                             <img src="googleicon.png" alt="Google">
-                            <span>Google</span>
+                            <span> Google </span>
                         </button>
-                        <button class="social-btn">
+                        <button type="button" class="social-btn">
                             <img src="microsofticon.png" alt="Microsoft">
-                            <span>Microsoft</span>
+                            <span> Microsoft </span>
                         </button>
                     </div>
-                    <div class="contact-admin">
-                        Don't have an account?
-                        <a href="#">Contact Administrator</a>
+
+
+                    <!-- CONTACT ADMIN -->
+
+                    <div class="contact-admin"> Don't have an account?
+                        <a href="javascript:void(0)"> Contact Administrator </a>
                     </div>
                 </div>
-            </div>    
-            <div class="footer">
-                © 2026 NexusERP. All rights reserved.
-            </div>              
+            </div>
+
+
+            <!-- FOOTER -->
+            <div class="footer"> © 2026 NexusERP. All rights reserved. </div>
         </div>
-    </div> 
+    </div>
+
+
+    <!-- FORGOT PASSWORD MODAL -->
+    <div class="modal-overlay" *ngIf="showForgotPasswordModal" (click)="closeForgotPassword()">
+        <div class="forgot-password-modal" (click)="$event.stopPropagation()">
+            <!-- CLOSE -->
+            <button type="button" class="modal-close" (click)="closeForgotPassword()"> × </button>
+            <!-- ICON -->
+            <div class="forgot-icon">
+                <img src="lockicon.png" alt="Forgot Password">
+            </div>
+            <!-- TITLE -->
+            <h2> Forgot Password? </h2>
+            <p>
+                Enter your registered email address and
+                we'll help you reset your password.
+            </p>
+            <!-- FORM -->
+            <form [formGroup]="forgotPasswordForm" (ngSubmit)="submitForgotPassword()" novalidate>
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <div class="input-box" [class.input-error]="forgotEmail?.invalid && (forgotEmail?.touched || forgotPasswordSubmitted)">
+                        <img src="emailicon.png" class="input-icon" alt="Email">
+                        <input id="username" type="text" formControlName="username" placeholder="Enter your username" autocomplete="username"> </div>
+                    <!-- VALIDATION -->
+                    <div class="validation-message" *ngIf="forgotEmail?.invalid && (forgotEmail?.touched || forgotPasswordSubmitted)">
+                        <span *ngIf="forgotEmail?.errors?.['required']"> Username is required. </span>
+                        <span *ngIf="forgotEmail?.errors?.['minlength']"> Username must be at least 3 characters. </span>
+                    </div>
+                </div>
+                <button type="submit" class="forgot-submit-btn"> Send Reset Link </button>
+            </form>
+            <button type="button" class="cancel-btn" (click)="closeForgotPassword()">
+                Cancel
+            </button>
+        </div>
+    </div>
+
+    <!-- LOGIN RESULT MODAL -->
+    <div class="modal-overlay" *ngIf="showLoginResultModal" (click)="closeLoginResult()">
+        <div class="login-result-modal" [class.success]="loginResultType === 'success'" [class.error]="loginResultType === 'error'" (click)="$event.stopPropagation()">
+            <button type="button" class="modal-close" (click)="closeLoginResult()"> &times; </button>
+            <div class="result-icon">
+                <span *ngIf="loginResultType === 'success'">&#10003;</span>
+                <span *ngIf="loginResultType === 'error'">!</span>
+            </div>
+            <h2>{{ loginResultTitle }}</h2>
+            <p>{{ loginResultMessage }}</p>
+            <button type="button" class="result-action-btn" (click)="closeLoginResult()">
+                OK
+            </button>
+        </div>
+    </div>
 </div>
