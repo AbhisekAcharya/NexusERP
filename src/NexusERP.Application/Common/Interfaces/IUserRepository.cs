@@ -8,8 +8,11 @@ namespace NexusERP.Application.Common.Interfaces
     public interface IUserRepository
     {
         Task<User?> GetByUsernameAsync(string username, CancellationToken cancellationToken);
+        Task<User?> GetByUsernameOrEmailAsync(string usernameOrEmail, CancellationToken cancellationToken);
         Task AddAsync(User user, CancellationToken cancellationToken);
         Task<bool> UsernameExistsAsync(string username, CancellationToken cancellationToken);
+        Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken);
+        Task<bool> EmailExistsAsync(string email, CancellationToken cancellationToken);
         Task<bool> EmployeeHasUserAsync(Guid employeeId, CancellationToken cancellationToken);
     }
 }

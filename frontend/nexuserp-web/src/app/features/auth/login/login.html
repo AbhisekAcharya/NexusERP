@@ -93,19 +93,19 @@
                     <form [formGroup]="loginForm" (ngSubmit)="onLogin()" novalidate>
                         <div class="login-form">
 
-                            <!-- EMAIL -->
+                            <!-- USERNAME OR EMAIL -->
                             <div class="form-group">
-                                <label for="username">Username</label>
-                                <div class="input-box" [class.input-error]="usernameInvalid">
-                                    <img src="emailicon.png" class="input-icon" alt="Username">
-                                    <input id="username" type="text" formControlName="username" placeholder="Enter your username" autocomplete="username">
+                                <label for="usernameOrEmail">Username or Email</label>
+                                <div class="input-box" [class.input-error]="usernameOrEmailInvalid">
+                                    <img src="emailicon.png" class="input-icon" alt="Username or Email">
+                                    <input id="usernameOrEmail" type="text" formControlName="usernameOrEmail" placeholder="Enter your username or email" autocomplete="username">
                                 </div>
-                                <!-- USERNAME VALIDATION -->
-                                <div class="validation-message" *ngIf="submitted && username?.hasError('required')">
-                                    Username is required.
+                                <!-- VALIDATION -->
+                                <div class="validation-message" *ngIf="submitted && usernameOrEmail?.hasError('required')">
+                                    Username or email is required.
                                 </div>
-                                <div class="validation-message" *ngIf="submitted && username?.hasError('minlength')">
-                                    Username must be at least 3 characters.
+                                <div class="validation-message" *ngIf="submitted && usernameOrEmail?.hasError('minlength')">
+                                    Username or email must be at least 3 characters.
                                 </div>
                             </div>
 
@@ -202,19 +202,70 @@
                 we'll help you reset your password.
             </p>
             <!-- FORM -->
-            <form [formGroup]="forgotPasswordForm" (ngSubmit)="submitForgotPassword()" novalidate>
+            <form
+                [formGroup]="forgotPasswordForm"
+                (ngSubmit)="submitForgotPassword()"
+                novalidate
+            >
+
                 <div class="form-group">
-                    <label for="username">Username</label>
-                    <div class="input-box" [class.input-error]="forgotEmail?.invalid && (forgotEmail?.touched || forgotPasswordSubmitted)">
-                        <img src="emailicon.png" class="input-icon" alt="Email">
-                        <input id="username" type="text" formControlName="username" placeholder="Enter your username" autocomplete="username"> </div>
-                    <!-- VALIDATION -->
-                    <div class="validation-message" *ngIf="forgotEmail?.invalid && (forgotEmail?.touched || forgotPasswordSubmitted)">
-                        <span *ngIf="forgotEmail?.errors?.['required']"> Username is required. </span>
-                        <span *ngIf="forgotEmail?.errors?.['minlength']"> Username must be at least 3 characters. </span>
+
+                    <label for="email">
+                        Email Address
+                    </label>
+
+                    <div
+                        class="input-box"
+                        [class.input-error]="
+                            forgotEmail?.invalid &&
+                            (forgotEmail?.touched || forgotPasswordSubmitted)
+                        "
+                    >
+
+                        <img
+                            src="emailicon.png"
+                            class="input-icon"
+                            alt="Email"
+                        >
+
+                        <input
+                            id="email"
+                            type="email"
+                            formControlName="email"
+                            placeholder="Enter your registered email"
+                            autocomplete="email"
+                        >
+
                     </div>
+
+                    <div
+                        class="validation-message"
+                        *ngIf="
+                            forgotEmail?.invalid &&
+                            (forgotEmail?.touched || forgotPasswordSubmitted)
+                        "
+                    >
+
+                        <span *ngIf="forgotEmail?.errors?.['required']">
+                            Email is required.
+                        </span>
+
+                        <span *ngIf="forgotEmail?.errors?.['email']">
+                            Please enter a valid email address.
+                        </span>
+
+                    </div>
+
                 </div>
-                <button type="submit" class="forgot-submit-btn"> Send Reset Link </button>
+
+                <button
+                    type="submit"
+                    class="forgot-submit-btn"
+                    [disabled]="isLoading"
+                >
+                    {{ isLoading ? 'Sending...' : 'Send Reset Link' }}
+                </button>
+
             </form>
             <button type="button" class="cancel-btn" (click)="closeForgotPassword()">
                 Cancel

@@ -5,6 +5,7 @@ using NexusERP.API.Middlewares;
 using NexusERP.Application.Common.Authentication;
 using NexusERP.Application.DependencyInjection;
 using NexusERP.Persistence.DependencyInjection;
+using NexusERP.Infrastructure.DependencyInjection;
 using System.Text;
 using System.Text.Json.Serialization;
 
@@ -32,6 +33,7 @@ builder.Services.AddCors(options =>
 // Application
 builder.Services.AddApplication();
 builder.Services.AddPersistence(builder.Configuration);
+builder.Services.AddInfrastructure(builder.Configuration);
 //JWT Authentication
 builder.Services.Configure<JwtSettings>(builder.Configuration.GetSection(JwtSettings.SectionName));
 var jwtSettings = builder.Configuration.GetSection(JwtSettings.SectionName).Get<JwtSettings>()!;

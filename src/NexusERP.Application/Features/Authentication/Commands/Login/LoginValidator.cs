@@ -9,7 +9,7 @@ namespace NexusERP.Application.Features.Authentication.Commands.Login
     {
         public LoginValidator()
         {
-            RuleFor(x => x.Request.Username).NotEmpty().WithMessage("Username is required.");
+            RuleFor(x => x.Request.UsernameOrEmail).NotEmpty().WithMessage("Username or Email is required.");
             RuleFor(x => x.Request.Password).NotEmpty().WithMessage("Password is required.");
         }
     }

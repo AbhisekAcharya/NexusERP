@@ -15,6 +15,7 @@ namespace NexusERP.Persistence.Contexts
 
         public DbSet<Employee> Employees => Set<Employee>();
         public DbSet<User> Users => Set<User>();
+        public DbSet<PasswordResetToken> PasswordResetTokens => Set<PasswordResetToken>();
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(ApplicationDbContext).Assembly);

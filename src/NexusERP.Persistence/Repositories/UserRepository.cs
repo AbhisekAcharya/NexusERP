@@ -19,6 +19,10 @@ namespace NexusERP.Persistence.Repositories
         {
             return await _context.Users.Include(u => u.Employee).FirstOrDefaultAsync(u => u.Username == username, cancellationToken);
         }
+        public async Task<User?> GetByUsernameOrEmailAsync(string usernameOrEmail, CancellationToken cancellationToken)
+        {
+            return await _context.Users.Include(u => u.Employee).FirstOrDefaultAsync(u => u.Username == usernameOrEmail || u.Email == usernameOrEmail, cancellationToken);
+        }
         public async Task AddAsync(User user, CancellationToken cancellationToken)
         {
             await _context.Users.AddAsync(user, cancellationToken);
@@ -27,6 +31,14 @@ namespace NexusERP.Persistence.Repositories
         public async Task<bool> UsernameExistsAsync(string username, CancellationToken cancellationToken)
         {
             return await _context.Users.AnyAsync(x => x.Username == username, cancellationToken);
+        }
+        public async Task<User?> GetByEmailAsync(string email, CancellationToken cancellationToken)
+        {
+            return await _context.Users.Include(u => u.Employee).FirstOrDefaultAsync(u => u.Email == email, cancellationToken);
+        }
+        public async Task<bool> EmailExistsAsync(string email, CancellationToken cancellationToken)
+        {
+            return await _context.Users.AnyAsync(x => x.Email == email, cancellationToken);
         }
         public async Task<bool> EmployeeHasUserAsync(Guid employeeId, CancellationToken cancellationToken)
         {

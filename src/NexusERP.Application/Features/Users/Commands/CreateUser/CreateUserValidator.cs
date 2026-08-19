@@ -11,6 +11,7 @@ namespace NexusERP.Application.Features.Users.Commands.CreateUser
         {
             RuleFor(x => x.Request.EmployeeId).NotEmpty().WithMessage("Employee is required.");
             RuleFor(x => x.Request.Username).NotEmpty().MaximumLength(100);
+            RuleFor(x => x.Request.Email).NotEmpty().EmailAddress().MaximumLength(255).WithMessage("A valid email address is required.");
             RuleFor(x => x.Request.Password).NotEmpty().MinimumLength(8);
             RuleFor(x => x.Request.Role).IsInEnum().WithMessage("Invalid role.");
         }

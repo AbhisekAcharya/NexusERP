@@ -13,11 +13,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Authentication\" />
     <Folder Include="Caching\" />
     <Folder Include="Configurations\" />
-    <Folder Include="DependencyInjection\" />
-    <Folder Include="Email\" />
     <Folder Include="ExternalServices\" />
     <Folder Include="Identity\" />
     <Folder Include="Logging\" />
@@ -26,7 +23,12 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MailKit" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" />
     <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" />
+    <PackageReference Include="Microsoft.Extensions.Http" />
+    <PackageReference Include="Microsoft.Extensions.Options" />
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" />
   </ItemGroup>
 
 </Project>

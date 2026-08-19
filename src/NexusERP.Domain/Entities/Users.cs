@@ -8,6 +8,7 @@ namespace NexusERP.Domain.Entities
     public sealed class User : BaseEntity
     {
         public string Username { get; private set; } = string.Empty;
+        public string Email { get; private set; } = string.Empty;
         public string PasswordHash { get; private set; } = string.Empty;
         public UserRole Role { get; private set; }
         public Guid EmployeeId { get; private set; }
@@ -16,9 +17,10 @@ namespace NexusERP.Domain.Entities
         {
 
         }
-        public User(string username, string passwordHash, UserRole role, Guid employeeId)
+        public User(string username, string email, string passwordHash, UserRole role, Guid employeeId)
         {
             Username = username;
+            Email = email;
             PasswordHash = passwordHash;
             Role = role;
             EmployeeId = employeeId;

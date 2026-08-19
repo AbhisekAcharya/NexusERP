@@ -22,7 +22,7 @@ namespace NexusERP.Application.Features.Authentication.Commands.Login
 
         public async Task<ApiResponse<LoginResponse>> Handle(LoginCommand request, CancellationToken cancellationToken)
         {
-            var user = await _userRepository.GetByUsernameAsync(request.Request.Username, cancellationToken);
+            var user = await _userRepository.GetByUsernameOrEmailAsync(request.Request.UsernameOrEmail, cancellationToken);
             if (user is null)
                 return ApiResponse<LoginResponse>.Failure("Invalid username or password.", 401);
             var isValidPassword = _passwordHasher.Verify(request.Request.Password, user.PasswordHash);
@@ -35,6 +35,7 @@ namespace NexusERP.Application.Features.Authentication.Commands.Login
                 UserId = user.Id,
                 EmployeeId = user.EmployeeId,
                 Username = user.Username,
+                Email = user.Email,
                 Role = user.Role
             };
             return ApiResponse<LoginResponse>.Success(response, "Login successful.", 200);

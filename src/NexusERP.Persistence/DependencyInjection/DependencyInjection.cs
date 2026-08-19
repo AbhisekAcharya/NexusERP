@@ -26,6 +26,8 @@ namespace NexusERP.Persistence.DependencyInjection
             // Authentication
             services.AddScoped<IPasswordHasher, PasswordHasher>();
             services.AddScoped<IJwtTokenProvider, JwtTokenProvider>();
+            //Reset Password
+            services.AddScoped<IPasswordResetTokenRepository, PasswordResetTokenRepository>();
             return services;
         }
     }

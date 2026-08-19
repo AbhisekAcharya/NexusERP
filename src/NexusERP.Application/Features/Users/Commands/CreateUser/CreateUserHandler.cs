@@ -31,14 +31,20 @@ namespace NexusERP.Application.Features.Users.Commands.CreateUser
                 return ApiResponse<CreateUserResponse>.Failure("This employee already has a user account.", 400);
             if (await _userRepository.UsernameExistsAsync(request.Request.Username, cancellationToken))
                 return ApiResponse<CreateUserResponse>.Failure("Username already exists.", 400);
+            if (await _userRepository.EmailExistsAsync(request.Request.Email, cancellationToken))
+            {
+                return ApiResponse<CreateUserResponse>
+                    .Failure("Email address already exists.", 400);
+            }
             var passwordHash = _passwordHasher.Hash(request.Request.Password);
-            var user = new User(request.Request.Username, passwordHash, request.Request.Role, request.Request.EmployeeId);
+            var user = new User(request.Request.Username, request.Request.Email, passwordHash, request.Request.Role, request.Request.EmployeeId);
             await _userRepository.AddAsync(user, cancellationToken);
             var response = new CreateUserResponse
             {
                 Id = user.Id,
                 EmployeeId = user.EmployeeId,
                 Username = user.Username,
+                Email = user.Email,
                 Role = user.Role.ToString()
             };
             return ApiResponse<CreateUserResponse>.Success(response, "User created successfully.", 201);
