@@ -14,6 +14,15 @@ The objective is to build a complete production-grade ERP platform while showcas
 
 ---
 
+## Website Preview
+
+<p align="center">
+  <img 
+    src="screenshots/Screenshot%202026-08-19%20130517.png" 
+    alt="NexusERP Website Preview"
+    width="900"
+  />
+</p>
 
 ---
 
